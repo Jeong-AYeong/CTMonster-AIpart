@@ -3,11 +3,11 @@ from PIL import Image, ImageDraw, ImageFont
 import cv2
 import numpy as np
 
-img_path = './write-1.png'
+img_path = './chocho.jpg'
 
 ocr = PaddleOCR(
     lang="korean",
-    det_db_thresh=0.2,
+    det_db_thresh=0.5,
     det_db_box_thresh=0.4,
     use_angle_cls=True
 )
@@ -29,7 +29,7 @@ image = Image.open(img_path).convert('RGB')
 draw = ImageDraw.Draw(image)
 
 try:
-    font = ImageFont.truetype("/System/Library/Fonts/AppleSDGothicNeo.ttc", 25)
+    font = ImageFont.truetype('C:/Windows/Fonts/malgun.ttf', 25)
 except:
     font = ImageFont.load_default()
 
@@ -42,5 +42,5 @@ for text, score, box in zip(texts, scores, boxes):
              fill='red', font=font)
 
 
-image.save('./test_result_improved1.jpg')
+image.save('./test_result_improved12.jpg')
 print("done")
